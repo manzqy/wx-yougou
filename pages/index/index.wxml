@@ -1,0 +1,19 @@
+<view class="search">
+  <view class="search-input">
+    <view>
+      <i class="iconfont icon-sousuo"></i>
+      <span>搜索</span>
+    </view>
+  </view>
+</view>
+<swiper class="swiper" indicator-dots indicator-color="rgba(0,0,0,.3)" autoplay current="0" current-item-id="" interval="5000" duration="500" circular="true">
+  <block wx:for="{{items}}">
+    <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+      <swiper-item class="swiper-item">
+        <image mode="widthFix">
+          
+        </image>
+      </swiper-item>
+    </navigator>
+  </block>
+</swiper>
