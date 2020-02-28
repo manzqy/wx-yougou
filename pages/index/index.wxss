@@ -3,6 +3,7 @@
   background: #ff2d4a;
 }
 .search .search-input {
+  width: 718rpx;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,4 +18,91 @@
 }
 .search .search-input span {
   font-size: 32rpx;
+}
+.swiper .swiper-item {
+  height: 350rpx;
+}
+.swiper image {
+  width: 100%;
+  height: 350rpx;
+}
+.menu {
+  display: flex;
+  padding: 24rpx 0;
+  justify-content: space-around;
+}
+.menu image {
+  width: 128rpx;
+}
+.floor-title {
+  padding-top: 30rpx;
+  background-color: #f4f4f4;
+}
+.floor-title image {
+  width: 100%;
+}
+.floor-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 16rpx;
+}
+.floor-content .floor-left image {
+  width: 232rpx;
+}
+.floor-right {
+  display: flex;
+  flex-wrap: wrap;
+}
+.floor-right image {
+  width: 233rpx;
+  height: 189rpx;
+  margin-left: 10rpx;
+}
+.floor + .floor .floor-right image {
+  width: 203rpx;
+}
+.floor + .floor .floor-right :nth-child(3n + 1) image {
+  width: 263rpx;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+  height: 231rpx;
+  padding-top: 22rpx;
+  background-color: #f4f4f4;
+  color: #999;
+  font-size: 26rpx;
+}
+.footer .iconfont {
+  margin-right: 10rpx;
+}
+.scroll-top {
+  position: fixed;
+  right: 25rpx;
+  bottom: 35rpx;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 20rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  box-shadow: 0 0 3px #ccc;
+}
+.scroll-top .arrow {
+  width: 15rpx;
+  height: 15rpx;
+  border-left: 1px solid #666;
+  border-top: 1px solid #666;
+  transform: rotate(45deg);
+}
+.fixed {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }

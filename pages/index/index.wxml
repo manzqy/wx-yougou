@@ -1,4 +1,5 @@
-<view class="search">
+<!-- 搜索框 -->
+<view class="search {{isShow ? 'fixed' : ''}}">
   <view class="search-input">
     <view>
       <i class="iconfont icon-sousuo"></i>
@@ -6,14 +7,58 @@
     </view>
   </view>
 </view>
-<swiper class="swiper" indicator-dots indicator-color="rgba(0,0,0,.3)" autoplay current="0" current-item-id="" interval="5000" duration="500" circular="true">
-  <block wx:for="{{items}}">
-    <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
-      <swiper-item class="swiper-item">
-        <image mode="widthFix">
-          
-        </image>
-      </swiper-item>
-    </navigator>
+<!-- 轮播图 -->
+<swiper class="swiper" indicator-dots indicator-color="rgba(255,255,255,.5)" indicator-active-color="#fff" autoplay current="0" current-item-id="" interval="5000" duration="500" circular="true">
+  <block wx:for="{{swiperData}}" wx:key="goods_id">
+    <swiper-item class="swiper-item">
+      <navigator class="" target="" url="" hover-class="navigator-hover" open-type="{{item.open_type}}">
+        <image mode="aspectFill" src="{{item.image_src}}"></image>
+      </navigator>
+    </swiper-item>
   </block>
 </swiper>
+<!-- 菜单栏 -->
+<view class="menu">
+  <block wx:for="{{menusData}}" wx:key="name">
+    <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+      <image class="" src="{{item.image_src}}" mode="widthFix"></image>
+    </navigator>
+  </block>
+</view>
+<!-- 楼层 -->
+<block wx:for="{{floorData}}" wx:for-item="ele" wx:key="index">
+  <view class="floor">
+    <!-- title -->
+    <view class="floor-title">
+      <image class="" src="{{ele.floor_title.image_src}}" mode="widthFix"></image>
+    </view>
+    <view class="floor-content">
+      <!-- left -->
+      <view class="floor-left">
+        <image class="" src="{{ele.product_list[0].image_src}}" mode="widthFix"></image>
+      </view>
+      <!-- right -->
+      <view class="floor-right">
+        <block wx:for="{{ele.product_list}}" wx:key="name" wx:if="{{index !== 0}}">
+          <navigator class="" target="" url="" hover-class="navigator-hover" open-type="item.open_type">
+            <image class="" src="{{item.image_src}}" mode="aspectFill"></image>
+          </navigator>
+        </block>
+      </view>
+    </view>
+  </view>
+</block>
+<!-- 底部 -->
+<view class="footer">
+  <i class="iconfont icon-xiaolian"></i>
+  <view >
+    我是有底线的！
+  </view>
+</view>
+<!-- 向上按钮 -->
+<view class="scroll-top" bindtap="toScrollTop" wx:if="{{isShow}}">
+  <view class="arrow"></view>
+  <view >
+    顶部
+  </view>
+</view>
