@@ -1,12 +1,4 @@
-<!-- 搜索框 -->
-<view class="search {{isShow ? 'fixed' : ''}}">
-  <view class="search-input">
-    <view>
-      <i class="iconfont icon-sousuo"></i>
-      <span>搜索</span>
-    </view>
-  </view>
-</view>
+<search isShow="{{isShow}}"></search>
 <!-- 轮播图 -->
 <swiper class="swiper" indicator-dots indicator-color="rgba(255,255,255,.5)" indicator-active-color="#fff" autoplay current="0" current-item-id="" interval="5000" duration="500" circular="true">
   <block wx:for="{{swiperData}}" wx:key="goods_id">

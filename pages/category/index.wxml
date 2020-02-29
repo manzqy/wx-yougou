@@ -1,2 +1,33 @@
-<!--pages/category/index.wxml-->
-<text>pages/category/index.wxml</text>
+<search></search>
+<!-- 列表 -->
+<view class="category">
+  <view class="goods_list">
+    <block wx:for="{{categoryData}}" wx:key="cat_id">
+      <view class="goods_item {{currentIndex === index ? 'active' : ''}}" bindtap="handleTap" data-index="{{index}}">
+        {{item.cat_name}}
+      </view>
+    </block>
+  </view>
+  <view class="brands_list">
+    <view class="logo_img">
+      <image class="" src="{{staticSrc}}" mode="aspectFill" lazy-load="false"></image>
+    </view>
+    <block wx:for="{{categoryData[currentIndex].children}}" wx:key="cat_id" wx:for-item="subItem">
+      <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+        <view class="brands_title" wx:if="{{subItem.children.length}}">
+          <i>/</i>
+          {{subItem.cat_name}}
+          <i>/</i>
+        </view>
+        <view class="brands_group">
+          <block wx:for="{{subItem.children}}" wx:key="index">
+            <view class="brands_item">
+              <image class="" src="{{item.cat_icon}}" mode="widthFix" lazy-load="true" binderror="" bindload=""></image>
+              <view>{{item.cat_name}}</view>
+            </view>
+          </block>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</view>

@@ -1,1 +1,78 @@
 /* pages/category/index.wxss */
+.category {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  top: 100rpx;
+  bottom: 0;
+  width: 100%;
+}
+.goods_list {
+  background-color: #f4f4f4;
+  height: 100%;
+  overflow: auto;
+}
+.goods_list .goods_item {
+  position: relative;
+  width: 198rpx;
+  box-sizing: border-box;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 30rpx;
+  border-bottom: 1px solid #eee;
+}
+.brands_list {
+  width: 552rpx;
+  height: 100%;
+  background-color: #fff;
+  overflow: auto;
+}
+.logo_img {
+  padding: 20rpx 16rpx;
+}
+.logo_img image {
+  width: 520rpx;
+  height: 180rpx;
+}
+.brands_title {
+  padding: 20rpx 0 35rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+.brands_title i {
+  color: #d9d9d9;
+  padding: 0 30rpx;
+}
+.brands_group {
+  display: flex;
+  flex-wrap: wrap;
+}
+.brands_group .brands_item {
+  flex: 0 0 33.3%;
+  display: flex;
+  box-sizing: border-box;
+  height: 166rpx;
+  padding: 15rpx 0;
+  font-size: 25rpx;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.brands_group .brands_item image {
+  width: 100rpx;
+}
+.active {
+  color: #eb4450;
+  background-color: #fff;
+}
+.active::before {
+  content: '';
+  display: block;
+  width: 8rpx;
+  height: 60rpx;
+  background-color: #eb4450;
+  position: absolute;
+  left: 0;
+  top: 20rpx;
+}

@@ -1,24 +1,3 @@
-.search {
-  padding: 20rpx 16rpx;
-  background: #ff2d4a;
-}
-.search .search-input {
-  width: 718rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60rpx;
-  color: #bbbbbb;
-  background-color: #fff;
-  border-radius: 5px;
-}
-.search .search-input .iconfont {
-  font-size: 32rpx;
-  margin-right: 16rpx;
-}
-.search .search-input span {
-  font-size: 32rpx;
-}
 .swiper .swiper-item {
   height: 350rpx;
 }
@@ -98,11 +77,4 @@
   border-left: 1px solid #666;
   border-top: 1px solid #666;
   transform: rotate(45deg);
-}
-.fixed {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 10;
 }

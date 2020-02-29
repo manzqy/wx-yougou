@@ -1,0 +1,9 @@
+<!-- 搜索框 -->
+<view class="search {{isShow ? 'fixed' : ''}}">
+  <view class="search-input">
+    <view>
+      <i class="iconfont icon-sousuo"></i>
+      <span>搜索</span>
+    </view>
+  </view>
+</view>
