@@ -1,1 +1,71 @@
 /* pages/goods_list/index.wxss */
+.goods_search {
+  box-sizing: border-box;
+  height: 120rpx;
+  padding-top: 30rpx;
+  background: #eeeeee;
+}
+.goods_search .goods_input {
+  position: relative;
+  width: 718rpx;
+  height: 60rpx;
+  margin: 0 auto;
+  font-size: 26rpx;
+  box-sizing: border-box;
+  padding-left: 76rpx;
+  background: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.goods_search .goods_input .iconfont {
+  position: absolute;
+  font-size: 26rpx;
+  left: 36rpx;
+  top: 16rpx;
+  cursor: pointer;
+}
+.goods_search .goods_input input {
+  height: 100%;
+  width: 100%;
+}
+.goods_filter {
+  height: 100rpx;
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+.goods_filter .filter_item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.goods_filter .filter_item image {
+  width: 17rpx;
+  margin-left: 10rpx;
+}
+.active {
+  color: #eb4450;
+}
+.scroll-top {
+  position: fixed;
+  right: 25rpx;
+  bottom: 35rpx;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 20rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  box-shadow: 0 0 3px #ccc;
+}
+.scroll-top .arrow {
+  width: 15rpx;
+  height: 15rpx;
+  border-left: 1px solid #666;
+  border-top: 1px solid #666;
+  transform: rotate(45deg);
+}

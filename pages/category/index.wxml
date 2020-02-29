@@ -21,10 +21,10 @@
         </view>
         <view class="brands_group">
           <block wx:for="{{subItem.children}}" wx:key="index">
-            <view class="brands_item">
-              <image class="" src="{{item.cat_icon}}" mode="widthFix" lazy-load="true" binderror="" bindload=""></image>
-              <view>{{item.cat_name}}</view>
-            </view>
+            <navigator class="brands_item" target="" url="../../pages/goods_list/index?query={{item.cat_name}}&cid={{item.cat_id}}" hover-class="navigator-hover" open-type="navigate">
+                <image class="" src="{{item.cat_icon}}" mode="widthFix" lazy-load="true" binderror="" bindload=""></image>
+                <view>{{item.cat_name}}</view>
+            </navigator>
           </block>
         </view>
       </navigator>

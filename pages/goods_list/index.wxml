@@ -1,2 +1,29 @@
-<!--pages/goods_list/index.wxml-->
-<text>pages/goods_list/index.wxml</text>
+<!-- 搜索 -->
+<view class="goods_search">
+  <view class="goods_input">
+    <i class="iconfont icon-sousuo" bindtap="handleSearch"></i>
+    <input class="" value="" type="text" placeholder="小米" placeholder-class="input-placeholder" bindinput="inputValue"></input>
+  </view>
+</view>
+<!-- filter -->
+<view class="goods_filter">
+  <block wx:for="{{filterTitle}}" wx:key="index">
+    <view class="filter_item {{currentIndex === index ? 'active' : ''}}" bindtap="handleFilter" data-index="{{index}}" data-price="{{priceChoose}}">
+    {{item}}
+    <image class="" src="{{price[priceChoose]}}" mode="widthFix" wx:if="{{index > 1}}">
+      
+    </image>
+  </view>
+  </block>
+</view>
+<!-- 列表 -->
+<block wx:for="{{searchData}}" wx:key="index">
+  <list data="{{item}}"></list>
+</block>
+<!-- 向上按钮 -->
+<view class="scroll-top" bindtap="toScrollTop" wx:if="{{isShow}}">
+  <view class="arrow"></view>
+  <view >
+    顶部
+  </view>
+</view>

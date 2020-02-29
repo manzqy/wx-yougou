@@ -22,6 +22,7 @@ Page({
       url: '/categories'
     }).then(({data}) => {
       const {message} = data
+      console.log('---', message)
       this.setData({
         categoryData: message
       })

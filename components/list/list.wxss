@@ -1,0 +1,46 @@
+.search_list {
+  width: 750rpx;
+  height: 260rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+  padding: 30rpx;
+}
+.list_pic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.list_pic image {
+  width: 190rpx;
+  height: 200rpx;
+}
+.list_content {
+  width: 473rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.list_content .list_title {
+  padding: 5rpx 0;
+  font-size: 30rpx;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.list_price {
+  font-size: 40rpx;
+  color: #eb4450;
+}
+.list_price .mini_price {
+  display: inline-block;
+  vertical-align: baseline;
+  font-size: 22rpx;
+}
+.list_price :first-child {
+  margin-right: 5rpx;
+}
