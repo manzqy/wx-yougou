@@ -1,2 +1,18 @@
-<!--pages/search/index.wxml-->
-<text>pages/search/index.wxml</text>
+<!-- 搜索 -->
+<view class="search">
+  <view class="search_input">
+    <i class="iconfont icon-sousuo" bindtap="submitSearch"></i>
+    <input class="" value="{{keywords}}" type="text" bindinput="handleInput" placeholder="请输入你想要的商品"></input>
+  </view>
+  <view class="search_cacel" bindtap="cacelKey">取消</view>
+</view>
+<!-- 历史记录 -->
+<view class="search_title">
+  <view class="title_content">历史搜索</view>
+  <view class="close_btn" bindtap="clearHistory">X</view>
+</view>
+<view class="search_list">
+  <block wx:for="{{historyList}}" wx:key="index">
+    <view class="list_item">{{item}}</view>
+  </block>
+</view>
