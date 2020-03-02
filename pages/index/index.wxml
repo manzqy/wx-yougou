@@ -1,4 +1,4 @@
-<search isShow="{{isShow}}"></search>
+<search isShow="{{isShow}}" icon="iconfont icon-sousuo"></search>
 <!-- 轮播图 -->
 <swiper class="swiper" indicator-dots indicator-color="rgba(255,255,255,.5)" indicator-active-color="#fff" autoplay current="0" current-item-id="" interval="5000" duration="500" circular="true">
   <block wx:for="{{swiperData}}" wx:key="goods_id">
@@ -41,12 +41,7 @@
   </view>
 </block>
 <!-- 底部 -->
-<view class="footer">
-  <i class="iconfont icon-xiaolian"></i>
-  <view >
-    我是有底线的！
-  </view>
-</view>
+<bottomline icon="iconfont icon-xiaolian"></bottomline>
 <!-- 向上按钮 -->
 <view class="scroll-top" bindtap="toScrollTop" wx:if="{{isShow}}">
   <view class="arrow"></view>

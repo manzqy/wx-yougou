@@ -1,0 +1,6 @@
+<view class="footer">
+  <i class="icon icon_size"></i>
+  <view >
+    我是有底线的！
+  </view>
+</view>

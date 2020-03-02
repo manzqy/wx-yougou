@@ -43,18 +43,7 @@
 .floor + .floor .floor-right :nth-child(3n + 1) image {
   width: 263rpx;
 }
-.footer {
-  display: flex;
-  justify-content: center;
-  height: 231rpx;
-  padding-top: 22rpx;
-  background-color: #f4f4f4;
-  color: #999;
-  font-size: 26rpx;
-}
-.footer .iconfont {
-  margin-right: 10rpx;
-}
+
 .scroll-top {
   position: fixed;
   right: 25rpx;

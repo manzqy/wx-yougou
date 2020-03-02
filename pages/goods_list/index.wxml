@@ -1,10 +1,5 @@
 <!-- 搜索 -->
-<view class="goods_search">
-  <view class="goods_input">
-    <i class="iconfont icon-sousuo" bindtap="handleSearch"></i>
-    <input class="" value="" type="text" placeholder="小米" placeholder-class="input-placeholder" bindinput="inputValue"></input>
-  </view>
-</view>
+<search icon="iconfont icon-sousuo" value="{{searchParams.query}}" align="left" background="search_outcolor"></search>
 <!-- filter -->
 <view class="goods_filter">
   <block wx:for="{{filterTitle}}" wx:key="index">
@@ -27,3 +22,7 @@
     顶部
   </view>
 </view>
+<!-- 底部提示 -->
+<bottomline wx:if="{{isShow}}" icon="iconfont icon-xiaolian"></bottomline>
+<!-- loading -->
+<loading wx:if="{{isloading}}"></loading>

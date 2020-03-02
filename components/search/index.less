@@ -3,6 +3,8 @@
   background: #ff2d4a;
   .search-input {
     width: 750rpx - 32;
+    box-sizing: border-box;
+    padding: 0 20rpx;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,11 +12,11 @@
     color: #bbbbbb;
     background-color: #fff;
     border-radius: 5px;
-    .iconfont {
+    .icon_size {
       font-size: 32rpx;
       margin-right: 16rpx;
     }
-    span {
+    .search_content {
       font-size: 32rpx;
     }
   }
@@ -25,4 +27,10 @@
   top: 0;
   left: 0;
   z-index: 10;
+}
+.left {
+  justify-content: flex-start!important;
+}
+.right {
+  justify-content: flex-end!important;
 }

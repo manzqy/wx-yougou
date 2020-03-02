@@ -1,6 +1,6 @@
 <view class="search_list">
   <view class="list_pic">
-    <image class="" src="{{data.goods_small_logo}}" mode="aspectFill" lazy-load="false"></image>
+    <image class="image" src="{{data.goods_small_logo}}" mode="aspectFill" lazy-load="false"></image>
   </view>
   <view class="list_content">
     <view class="list_title">

@@ -1,0 +1,4 @@
+<view class="loader">
+  <slot></slot>
+</view>
+<view class="loading_bottom"></view>

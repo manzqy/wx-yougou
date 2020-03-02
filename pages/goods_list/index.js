@@ -1,7 +1,6 @@
 import request from '../../utils/request'
 // pages/goods_list/index.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -23,14 +22,16 @@ Page({
     oldData: [],
     total: '',
     isShow: false,
-    keywords: ''
+    keywords: '',
+    iskey: false,
+    isloading: true
   },
   handleFilter(e) {
     let newData = [...this.data.searchData]
-    const {index} = e.currentTarget.dataset
-    const {price} = e.currentTarget.dataset
+    const { index } = e.currentTarget.dataset
+    const { price } = e.currentTarget.dataset
     this.setData({
-      currentIndex: index,
+      currentIndex: index
     })
     if (index === 0) {
       this.setData({
@@ -60,9 +61,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     console.log('>', options)
-    const {query, cid} = options
+    const { query, cid } = options
     const searchParams = {
       query,
       cid,
@@ -74,20 +75,25 @@ Page({
     })
     this.getListData()
   },
-  getListData() {
-    request({
-      url: '/goods/search',
-      data: this.data.searchParams
-    }).then(({data}) => {
-      console.log('>>>', data)
-      const{message} = data
-      const searchData = [...this.data.searchData, ...message.goods]
-      this.setData({
-        total: message.total,
-        searchData,
-        oldData: searchData
+  getListData(callback) {
+    setTimeout(() => {
+      request({
+        url: '/goods/search',
+        data: this.data.searchParams
+      }).then(({ data }) => {
+        console.log('>>>', data)
+        const { message } = data
+        const searchData = [...this.data.searchData, ...message.goods]
+        this.setData({
+          total: message.total,
+          searchData,
+          oldData: searchData,
+          iskey: true,
+          isloading: false
+        })
+        callback && callback()
       })
-    })
+    }, 3000)
   },
   toScrollTop() {
     wx.pageScrollTo({
@@ -100,93 +106,89 @@ Page({
       })
     }, 1000)
   },
-  inputValue(e) {
-    console.log(e)
-    const {value} = e.detail
-    this.setData({
-      keywords: value
-    })
-  },
-  handleSearch() {
-    if (!this.data.keywords) return
-    const query = this.data.keywords
-    request({
-      url: '/goods/qsearch',
-      data: {
-        query
-      }
-    }).then(({data}) => {
-      console.log('ppp', data)
-    })
-  },
+  // inputValue(e) {
+  //   console.log(e)
+  //   const {value} = e.detail
+  //   this.setData({
+  //     keywords: value
+  //   })
+  // },
+  // handleSearch() {
+  //   if (!this.data.keywords) return
+  //   const query = this.data.keywords
+  //   request({
+  //     url: '/goods/qsearch',
+  //     data: {
+  //       query
+  //     }
+  //   }).then(({data}) => {
+  //     console.log('ppp', data)
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function() {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function() {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function() {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-    const searchParams = {...this.data.searchParams, pagenum: 0, pagesize: 5}
+  onPullDownRefresh: function() {
+    const searchParams = { ...this.data.searchParams, pagenum: 0, pagesize: 5 }
     this.setData({
       searchParams,
       searchData: []
     })
-    this.getListData()
-    wx.stopPullDownRefresh()
+    this.getListData(() => {
+      wx.stopPullDownRefresh()
+    })
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-    console.log('>>>>>>>>>>>>')
-    let pagenum = this.data.searchParams.pagenum
-    pagenum ++
+  onReachBottom: function() {
+    let pagenum
     const max = Math.ceil(this.data.total / this.data.searchParams.pagesize)
-    console.log('%c'+ max,  'color:red;font-size:25px;')
-    if (pagenum > max) {
-      console.log('%c到底了', 'color:red;font-size:25px;')
+    console.log('>>>>>>>>>>>>')
+    if (this.data.iskey) {
       this.setData({
-        isShow: true
+        iskey: false
       })
-      return
+      pagenum = this.data.searchParams.pagenum
+      pagenum++
+      if (pagenum > max) {
+        this.setData({
+          isShow: true,
+          isloading: false
+        })
+        return
+      }
+      this.setData({
+        searchParams: { ...this.data.searchParams, pagenum },
+        isloading: true
+      })
+      this.getListData()
     }
-    console.log('???', {...this.data.searchParams, pagenum})
-    this.setData({
-      searchParams: {...this.data.searchParams, pagenum}
-    })
-    this.getListData()
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
+  onShareAppMessage: function() {}
 })

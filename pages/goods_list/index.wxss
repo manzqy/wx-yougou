@@ -69,3 +69,6 @@
   border-top: 1px solid #666;
   transform: rotate(45deg);
 }
+.search_outcolor {
+  background-color: #eeeeee !important;
+}
