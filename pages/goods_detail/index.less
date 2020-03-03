@@ -1,14 +1,14 @@
 /* pages/goods_detail/index.wxss */
 .detail_swiper {
   height: 722rpx;
-}
-.detail_swiper .swiper_item {
-  box-sizing: border-box;
-  padding: 0 14rpx;
-}
-.detail_swiper .swiper_item .detail_img {
-  width: 722rpx;
-  height: 722rpx;
+  .swiper_item {
+    box-sizing: border-box;
+    padding: 0 14rpx;
+    .detail_img {
+      width: 722rpx;
+      height: 722rpx;
+    }
+  }
 }
 .detail_price {
   padding: 45rpx 20rpx 38rpx;
@@ -23,27 +23,27 @@
   box-sizing: border-box;
   padding-left: 20rpx;
   font-size: 33rpx;
-}
-.detail_content .content_item {
-  flex: 1;
-  box-sizing: border-box;
-  padding-right: 85rpx;
-  line-height: 40rpx;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-.detail_content .detail_like {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 142rpx;
-  font-size: 26rpx;
-  border-left: 1px solid #bbbbbb;
-  color: #bbbbbb;
+  .content_item {
+    flex: 1;
+    box-sizing: border-box;
+    padding-right: 85rpx;
+    line-height: 40rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .detail_like {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 142rpx;
+    font-size: 26rpx;
+    border-left: 1px solid #bbbbbb;
+    color: #bbbbbb;
+  }
 }
 .delivery {
   box-sizing: border-box;
@@ -61,8 +61,7 @@
   background: #fff;
   z-index: 10;
 }
-.bottom_customer,
-.bottom_cart {
+.bottom_customer, .bottom_cart {
   height: 100%;
   display: flex;
   width: 163rpx;
@@ -75,8 +74,7 @@
   color: #666666;
   cursor: pointer;
 }
-.bottom_join,
-.bottom_buy {
+.bottom_join, .bottom_buy {
   height: 100%;
   display: flex;
   flex: 1;
@@ -98,10 +96,10 @@
   padding: 24rpx 20rpx;
   font-size: 30rpx;
   border-bottom: 1px solid #ccc;
-}
-.detail_sales .sales_price {
-  margin-left: 45rpx;
-  color: #eb4450;
+  .sales_price {
+    margin-left: 45rpx;
+    color: #eb4450;
+  }
 }
 .line {
   height: 20rpx;

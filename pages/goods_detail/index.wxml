@@ -1,2 +1,46 @@
-<!--pages/goods_detail/index.wxml-->
-<text>pages/goods_detail/index.wxml</text>
+<!-- 轮播图 -->
+<swiper class="detail_swiper" indicator-dots="true" indicator-color="rgba(0,0,0,.3)" autoplay="true" current="0" interval="5000" duration="1000" circular="false" indicator-active-color="#fff">
+  <block wx:for="{{detailData.pics}}" wx:key="pics_id">
+    <swiper-item class="swiper_item" item-id="">
+      <image class="detail_img" src="{{item.pics_big}}" mode="aspectFill"></image>
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 价格 -->
+<view class="detail_price">￥ {{detailData.goods_price}}</view>
+<!-- 收藏 -->
+<view class="detail_content">
+  <view class="content_item">{{detailData.goods_name}}</view>
+  <view class="detail_like">
+    <i class="iconfont icon-shoucang"></i>
+    <view>收藏</view>
+  </view>
+</view>
+<!-- 快递 -->
+<view class="delivery">
+  快递：<text >免运费</text>
+</view>
+<view class="line"></view>
+<view class="detail_sales">
+  促销
+  <view class="sales_price">满300减30元</view>
+</view>
+
+
+
+
+<!-- 底部栏 -->
+<view class="detail_bottom">
+  <view class="bottom_customer">
+    <i class="iconfont icon-kefu"></i>
+    <view>客服</view>
+  </view>
+  <view class="bottom_cart">
+    <i class="iconfont icon-gou_wu_che2"></i>
+    <view>购物车</view>
+  </view>
+  <view class="bottom_join">加入购物车</view>
+  <view class="bottom_buy">立即购买</view>
+</view>
+<!-- 详细说明 -->
+<rich-text nodes="{{detailData.goods_introduce}}" space="nbsp"></rich-text>
