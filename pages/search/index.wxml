@@ -2,9 +2,9 @@
 <view class="search">
   <view class="search_input">
     <i class="iconfont icon-sousuo" bindtap="submitSearch"></i>
-    <input class="" value="{{keywords}}" type="text" bindinput="handleInput" placeholder="请输入你想要的商品"></input>
+    <input class="" value="{{keywords}}" type="text" bindinput="handleInput" placeholder="请输入你想要的商品" bindconfirm="submitSearch" focus="{{true}}"></input>
   </view>
-  <view class="search_cacel" bindtap="cacelKey">取消</view>
+  <view class="search_cacel" bindtap="cacelKey" wx:if="{{keywords}}">取消</view>
 </view>
 <!-- 历史记录 -->
 <view class="search_title">
@@ -13,6 +13,16 @@
 </view>
 <view class="search_list">
   <block wx:for="{{historyList}}" wx:key="index">
-    <view class="list_item">{{item}}</view>
+    <navigator class="" target="" url="/pages/goods_list/index?query={{item}}" hover-class="navigator-hover" open-type="navigate">
+      <view class="list_item">{{item}}</view>
+    </navigator>
+  </block>
+</view>
+<!-- 搜索列表 -->
+<view class="search_result" wx:if="{{keywords}}">
+  <block wx:for="{{searchData}}" wx:key="index">
+    <navigator class="" target="" url="/pages/goods_detail/index?id={{item.goods_id}}" hover-class="navigator-hover" open-type="navigate">
+      <view class="result_item">{{item.goods_name}}</view>
+    </navigator>
   </block>
 </view>

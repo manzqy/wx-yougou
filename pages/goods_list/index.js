@@ -62,13 +62,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log('>', options)
+    let searchParams
     const { query, cid } = options
-    const searchParams = {
-      query,
-      cid,
-      pagenum: 1,
-      pagesize: 5
+    if (cid) {
+      searchParams = {
+        query,
+        cid,
+        pagenum: 1,
+        pagesize: 5
+      }
+    } else {
+      searchParams = {
+        query,
+        pagenum: 1,
+        pagesize: 5
+      }
     }
     this.setData({
       searchParams
@@ -81,7 +89,6 @@ Page({
         url: '/goods/search',
         data: this.data.searchParams
       }).then(({ data }) => {
-        console.log('>>>', data)
         const { message } = data
         const searchData = [...this.data.searchData, ...message.goods]
         this.setData({
@@ -106,25 +113,6 @@ Page({
       })
     }, 1000)
   },
-  // inputValue(e) {
-  //   console.log(e)
-  //   const {value} = e.detail
-  //   this.setData({
-  //     keywords: value
-  //   })
-  // },
-  // handleSearch() {
-  //   if (!this.data.keywords) return
-  //   const query = this.data.keywords
-  //   request({
-  //     url: '/goods/qsearch',
-  //     data: {
-  //       query
-  //     }
-  //   }).then(({data}) => {
-  //     console.log('ppp', data)
-  //   })
-  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

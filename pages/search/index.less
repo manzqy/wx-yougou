@@ -10,7 +10,7 @@
   .search_input {
     box-sizing: border-box;
     padding-left: 70rpx;
-    width: 538rpx;
+    flex: 1;
     height: 60rpx;
     position: relative;
     border-radius: 10rpx;
@@ -30,6 +30,7 @@
     box-sizing: border-box;
     width: 160rpx;
     height: 60rpx;
+    margin-left: 30rpx;
     border-radius: 10rpx;
     border: 1px solid #bfbfbf;
     text-align: center;
@@ -74,5 +75,25 @@
     font-size: 27rpx;
     background-color: #dddddd;
     border-radius: 5px;
+  }
+}
+.search_result {
+  position: absolute;
+  top: 93rpx;
+  left: 0;
+  right: 0;
+  min-height: 500rpx;
+  border-top: 3px solid #eb4450;
+  background-color: #fff;
+  z-index: 99;
+  .result_item {
+    box-sizing: border-box;
+    padding: 26rpx 30rpx;
+    font-size: 30rpx;
+    border-bottom: 1px dashed #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
   }
 }

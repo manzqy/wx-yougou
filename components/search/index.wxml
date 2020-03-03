@@ -1,9 +1,11 @@
 <!-- 搜索框 -->
-<view class="search {{isShow ? 'fixed' : ''}} background">
-  <view class="search-input {{align}}">
-    <view>
-      <text class="icon icon_size"></text>
-      <text class="search_content">{{value}}</text>
+<navigator class="" target="" url="/pages/search/index" hover-class="navigator-hover" open-type="navigate">
+  <view class="search {{isShow ? 'fixed' : ''}} background">
+    <view class="search-input {{align}}">
+      <view>
+        <text class="icon icon_size"></text>
+        <text class="search_content">{{value}}</text>
+      </view>
     </view>
   </view>
-</view>
+</navigator>

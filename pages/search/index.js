@@ -1,3 +1,4 @@
+import request from '../../utils/request'
 // pages/search/index.js
 Page({
   /**
@@ -5,7 +6,10 @@ Page({
    */
   data: {
     historyList: [],
-    keywords: ''
+    keywords: '',
+    oldwords: '',
+    searchData: [],
+    isKey: false
   },
 
   /**
@@ -20,45 +24,80 @@ Page({
         })
       },
       success: res => {
-        console.log('>>>', res)
         this.setData({
-          historyList: res.data
+          historyList: res.data,
+          isKey: true
         })
       }
     })
   },
-  handleInput(e) {
-    const { value } = e.detail
-    console.log(e, value)
-    this.setData({
-      keywords: value
+  // 跳转到列表页
+  toGoodsList() {
+    wx.redirectTo({
+      url: '/pages/goods_list/index?query=' + this.data.keywords
     })
   },
+  // input框双向绑定
+  handleInput(e) {
+    let value
+    if (e) {
+      value = e.detail.value
+      this.setData({
+        keywords: value
+      })
+    }
+    if (!this.data.keywords || !this.data.isKey) return
+    this.setData({
+      isKey: false,
+      oldwords: this.data.keywords
+    })
+    const query = this.data.keywords
+    request({
+      url: '/goods/qsearch',
+      data: {
+        query
+      }
+    }).then(({ data }) => {
+      const { message } = data
+      this.setData({
+        searchData: message,
+        isKey: true
+      })
+      if (this.data.keywords !== this.data.oldwords) {
+        this.handleInput(false)
+      }
+    })
+  },
+  // 点击搜索按钮提交
   submitSearch() {
     if (!this.data.keywords) return
-    const historyList = [this.data.keywords, ...this.data.historyList]
+    this.setLocalStorage()
+    this.toGoodsList()
+  },
+  // 存储到本地
+  setLocalStorage() {
+    let historyList = [this.data.keywords, ...this.data.historyList]
+    historyList = [...new Set(historyList)]
+    if (historyList.length > 10) {
+      historyList.length = 10
+    }
     wx.setStorage({
       key: 'hema_his_list',
       data: historyList,
-      success: result => {
-        console.log('保存成功')
-      },
+      success: result => {},
       fail: () => {},
       complete: () => {}
     })
     this.setData({
-      historyList,
-      keywords: ''
+      historyList
     })
-    console.log(this.data.historyList)
   },
+  // 清除本地历史
   clearHistory() {
     wx.setStorage({
       key: 'hema_his_list',
       data: [],
-      success: result => {
-        console.log('保存成功')
-      },
+      success: result => {},
       fail: () => {},
       complete: () => {}
     })
