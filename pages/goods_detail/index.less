@@ -3,10 +3,9 @@
   height: 722rpx;
   .swiper_item {
     box-sizing: border-box;
-    padding: 0 14rpx;
     .detail_img {
-      width: 722rpx;
-      height: 722rpx;
+      width: 750rpx;
+      height: 750rpx;
     }
   }
 }
@@ -107,4 +106,50 @@
 }
 rich-text {
   line-height: 45rpx;
+}
+.detail_tab {
+  display: flex;
+  height: 80rpx;
+  .tab_item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+.active {
+  background-color: #eb4450;
+  color: #fff;
+}
+.detail_intro {
+  padding: 20rpx;
+  .intro_list {
+    display: flex;
+    padding: 20rpx 0;
+    align-items: center;
+    color: #999;
+    font-size: 30rpx;
+    border-bottom: 1px solid #ccc;
+    text {
+      margin-right: 25rpx;
+    }
+  }
+}
+.detail_bottom_padding {
+  min-height: 100rpx;
+}
+.customer_button {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 163rpx;
+  display: flex;
+  opacity: 0;
+  button {
+    flex: 1;
+    height: 100%;
+    background: green;
+  }
 }

@@ -1,7 +1,7 @@
 <!-- 轮播图 -->
-<swiper class="detail_swiper" indicator-dots="true" indicator-color="rgba(0,0,0,.3)" autoplay="true" current="0" interval="5000" duration="1000" circular="false" indicator-active-color="#fff">
+<swiper class="detail_swiper" indicator-dots="true" indicator-color="rgba(0,0,0,.3)" autoplay="true" current="0" interval="5000" duration="1000" circular="false" indicator-active-color="#000">
   <block wx:for="{{detailData.pics}}" wx:key="pics_id">
-    <swiper-item class="swiper_item" item-id="">
+    <swiper-item class="swiper_item" item-id="" bindtap="previewImg" data-index="{{index}}">
       <image class="detail_img" src="{{item.pics_big}}" mode="aspectFill"></image>
     </swiper-item>
   </block>
@@ -21,26 +21,45 @@
   快递：<text >免运费</text>
 </view>
 <view class="line"></view>
-<view class="detail_sales">
+<!-- <view class="detail_sales">
   促销
   <view class="sales_price">满300减30元</view>
+</view> -->
+<view class="detail_tab">
+  <block wx:for="{{['详情', '说明']}}" wx:key="index">
+    <view class="tab_item {{currentIndex === index ? 'active' : ''}}" bindtap="handleCurrentIndex" data-index="{{index}}">{{item}}</view>
+  </block>
 </view>
+<view class="line"></view>
 
-
-
-
+<!-- 详细说明 -->
+<rich-text nodes="{{detailData.goods_introduce}}" space="nbsp" wx:if="{{currentIndex === 0}}"></rich-text>
+<!-- 介绍 -->
+<view class="detail_intro" wx:if="{{currentIndex === 1}}">
+  <block wx:for="{{detailData.attrs}}" wx:key="index">
+    <view class="intro_list">
+      <text>{{item.attr_name}}：</text>
+      <text>{{item.attr_vals}}</text>
+    </view>
+    
+  </block>
+</view>
 <!-- 底部栏 -->
 <view class="detail_bottom">
+  <!-- 客服功能按钮 -->
+  <view class="customer_button">
+    <button open-type="contact"></button>
+  </view>
   <view class="bottom_customer">
     <i class="iconfont icon-kefu"></i>
     <view>客服</view>
   </view>
-  <view class="bottom_cart">
+  <view class="bottom_cart" bindtap="toCartPage">
     <i class="iconfont icon-gou_wu_che2"></i>
     <view>购物车</view>
   </view>
   <view class="bottom_join">加入购物车</view>
   <view class="bottom_buy">立即购买</view>
 </view>
-<!-- 详细说明 -->
-<rich-text nodes="{{detailData.goods_introduce}}" space="nbsp"></rich-text>
+<!-- 底部组件提示 -->
+<bottom-line icon="iconfont icon-xiaolian"></bottom-line>

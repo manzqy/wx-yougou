@@ -1,28 +1,30 @@
-<!-- 搜索 -->
-<view class="search">
-  <view class="search_input">
-    <i class="iconfont icon-sousuo" bindtap="submitSearch"></i>
-    <input class="" value="{{keywords}}" type="text" bindinput="handleInput" placeholder="请输入你想要的商品" bindconfirm="submitSearch" focus="{{true}}"></input>
+<view class="search_container" bindtap="closeSearchList">
+  <!-- 搜索 -->
+  <view class="search">
+    <view class="search_input">
+      <i class="iconfont icon-sousuo" bindtap="submitSearch"></i>
+      <input class="" value="{{keywords}}" type="text" bindinput="handleInput" placeholder="请输入你想要的商品" bindconfirm="submitSearch" focus="{{true}}"></input>
+    </view>
+    <view class="search_cacel" bindtap="cacelKey" wx:if="{{keywords}}">取消</view>
   </view>
-  <view class="search_cacel" bindtap="cacelKey" wx:if="{{keywords}}">取消</view>
-</view>
-<!-- 历史记录 -->
-<view class="search_title">
-  <view class="title_content">历史搜索</view>
-  <view class="close_btn" bindtap="clearHistory">X</view>
-</view>
-<view class="search_list">
-  <block wx:for="{{historyList}}" wx:key="index">
-    <navigator class="" target="" url="/pages/goods_list/index?query={{item}}" hover-class="navigator-hover" open-type="navigate">
-      <view class="list_item">{{item}}</view>
-    </navigator>
-  </block>
-</view>
-<!-- 搜索列表 -->
-<view class="search_result" wx:if="{{keywords}}">
-  <block wx:for="{{searchData}}" wx:key="index">
-    <navigator class="" target="" url="/pages/goods_detail/index?id={{item.goods_id}}" hover-class="navigator-hover" open-type="navigate">
-      <view class="result_item">{{item.goods_name}}</view>
-    </navigator>
-  </block>
+  <!-- 历史记录 -->
+  <view class="search_title">
+    <view class="title_content">历史搜索</view>
+    <view class="close_btn" bindtap="clearHistory">X</view>
+  </view>
+  <view class="search_list">
+    <block wx:for="{{historyList}}" wx:key="index">
+      <!-- <navigator url="/pages/goods_list/index?query={{item}}" open-type="navigate"> -->
+        <view class="list_item" bindtap="toGoodsListPage" data-query="{{item}}">{{item}}</view>
+      <!-- </navigator> -->
+    </block>
+  </view>
+  <!-- 搜索列表 -->
+  <view class="search_result" wx:if="{{keywords}}">
+    <block wx:for="{{searchData}}" wx:key="index">
+      <navigator class="" target="" url="/pages/goods_detail/index?goods_id={{item.goods_id}}" hover-class="navigator-hover" open-type="navigate">
+        <view class="result_item" bindtap="setLocalStorage" data-onlyid="{{item.goods_id}}">{{item.goods_name}}</view>
+      </navigator>
+    </block>
+  </view>
 </view>

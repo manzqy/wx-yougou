@@ -100,7 +100,7 @@ Page({
         })
         callback && callback()
       })
-    }, 3000)
+    }, 1500)
   },
   toScrollTop() {
     wx.pageScrollTo({

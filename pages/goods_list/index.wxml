@@ -13,7 +13,9 @@
 </view>
 <!-- 列表 -->
 <block wx:for="{{searchData}}" wx:key="index">
-  <list data="{{item}}"></list>
+  <navigator class="" target="" url="/pages/goods_detail/index?goods_id={{item.goods_id}}" hover-class="navigator-hover" open-type="navigate">
+    <list data="{{item}}"></list>
+  </navigator>
 </block>
 <!-- 向上按钮 -->
 <view class="scroll-top" bindtap="toScrollTop" wx:if="{{isShow}}">

@@ -1,16 +1,15 @@
 <view class="search_list">
   <view class="list_pic">
-    <image class="image" src="{{data.goods_small_logo}}" mode="aspectFill" lazy-load="false"></image>
+    <image class="pic_image" src="{{data.goods_small_logo}}" mode="aspectFill" lazy-load="false"></image>
   </view>
   <view class="list_content">
     <view class="list_title">
       {{data.goods_name}}
     </view>
     <view class="list_price">
-      <text class="mini_price">￥</text>
+      <text class="mini_price mr_5">￥</text>
       <text>{{data.goods_price}}</text>
       <text class="mini_price">.00</text>
     </view>
   </view>
 </view>
-<!--  -->

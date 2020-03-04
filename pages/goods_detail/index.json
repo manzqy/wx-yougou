@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "bottom-line": "../../components/bottom-line/bottom-line"
+  },
   "navigationBarTitleText": "商品详情"
 }

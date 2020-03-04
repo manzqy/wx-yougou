@@ -7,7 +7,9 @@ Page({
    */
   data: {
     goods_id: null,
-    detailData: {}
+    detailData: {},
+    pics: [],
+    currentIndex: 0
   },
 
   /**
@@ -21,6 +23,19 @@ Page({
     })
     this.getDetailData()
   },
+  // tab栏切换
+  handleCurrentIndex(e) {
+    const {index} = e.currentTarget.dataset
+    this.setData({
+      currentIndex: index
+    })
+  },
+  // 跳转到cart页面
+  toCartPage() {
+    wx.switchTab({
+      url: '/pages/cart/index',
+    })
+  },
   // 拿到数据
   getDetailData() {
     request({
@@ -30,9 +45,23 @@ Page({
       }
     }).then(({data}) => {
       console.log(data.message)
-      this.setData({
-        detailData: data.message
+      const pics = data.message.pics.map(v => {
+        return v.pics_big_url
       })
+      this.setData({
+        detailData: data.message,
+        pics
+      })
+    })
+  },
+  previewImg(e) {
+    const {index} = e.currentTarget.dataset
+    console.log(e)
+    console.log('%c' + index, 'color:green;font-size:25px;')
+    const {pics} = this.data
+    wx.previewImage({
+      current: pics[index], // 当前显示图片的http链接
+      urls: pics // 需要预览的图片http链接列表
     })
   },
   /**

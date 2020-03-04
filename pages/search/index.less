@@ -75,6 +75,7 @@
     font-size: 27rpx;
     background-color: #dddddd;
     border-radius: 5px;
+    cursor: pointer;
   }
 }
 .search_result {
@@ -82,10 +83,11 @@
   top: 93rpx;
   left: 0;
   right: 0;
-  min-height: 500rpx;
   border-top: 3px solid #eb4450;
+  border-bottom: 3px solid #eb4450;
   background-color: #fff;
   z-index: 99;
+  
   .result_item {
     box-sizing: border-box;
     padding: 26rpx 30rpx;
@@ -96,4 +98,10 @@
     white-space: nowrap;
     cursor: pointer;
   }
+}
+.search_result :last-child .result_item{
+  border-bottom: none;
+}
+.search_container {
+  min-height: 100vh;
 }
