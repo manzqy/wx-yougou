@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "bottomLine": "../../components/bottom-line/bottom-line"
+  },
+  "navigationBarTitleText": "购物车"
 }

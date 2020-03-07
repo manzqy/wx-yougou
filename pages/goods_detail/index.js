@@ -16,7 +16,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     const {goods_id} = options
     this.setData({
       goods_id
@@ -33,7 +32,7 @@ Page({
   // 跳转到cart页面
   toCartPage() {
     wx.switchTab({
-      url: '/pages/cart/index',
+      url: '/pages/cart/index'
     })
   },
   // 拿到数据
@@ -53,6 +52,40 @@ Page({
         pics
       })
     })
+  },
+  // 添加到购物车
+  addCart() {
+    const cartList = wx.getStorageSync('hema_cart_list') || []
+    const listItem = {
+      id: this.data.detailData.goods_id,
+      choosed: true,
+      small_logo: this.data.detailData.goods_small_logo,
+      name: this.data.detailData.goods_name,
+      price: this.data.detailData.goods_price,
+      number: 1
+    }
+    const validate = cartList.some(v => {
+      let valid = v.id === listItem.id
+      if (valid) {
+        v.number += 1
+        wx.showToast({
+          title: '已添加' + v.number + '件',
+          icon: 'success',
+          duration: 2000
+        })
+      }
+      return valid
+    })
+    if (!validate) {
+      cartList.unshift(listItem)
+      wx.showToast({
+        title: '添加成功',
+        icon: 'success',
+        duration: 2000
+      })
+    }
+    wx.setStorageSync('hema_cart_list', cartList)
+    
   },
   previewImg(e) {
     const {index} = e.currentTarget.dataset

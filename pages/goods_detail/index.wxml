@@ -58,7 +58,7 @@
     <i class="iconfont icon-gou_wu_che2"></i>
     <view>购物车</view>
   </view>
-  <view class="bottom_join">加入购物车</view>
+  <view class="bottom_join" bindtap="addCart">加入购物车</view>
   <view class="bottom_buy">立即购买</view>
 </view>
 <!-- 底部组件提示 -->

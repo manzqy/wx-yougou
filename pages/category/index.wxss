@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   top: 100rpx;
-  bottom: 0;
+  bottom: 96rpx;
   width: 100%;
 }
 .goods_list {

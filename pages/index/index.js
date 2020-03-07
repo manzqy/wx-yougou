@@ -11,6 +11,13 @@ Page({
     this.getSwiperData()
     this.getMenuData()
     this.getFloorData()
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0,
+        count: wx.getStorageSync('hema_cart_list').filter(v => v.choosed).length || 0
+      })
+    }
   },
   // 轮播图数据
   getSwiperData() {
