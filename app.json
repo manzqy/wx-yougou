@@ -9,7 +9,8 @@
     "pages/order_enter/index", 
     "pages/auth/index", 
     "pages/personal/index", 
-    "pages/pay/index" 
+    "pages/pay/index",
+    "pages/order_auth/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

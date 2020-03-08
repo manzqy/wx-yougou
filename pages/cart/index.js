@@ -33,9 +33,9 @@ Page({
   handleTabCount() {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
-        selected: 3,
+        selected: 2,
         count:
-          wx.getStorageSync('hema_cart_list').filter(v => v.choosed).length || 0
+        wx.getStorageSync('hema_cart_list') && wx.getStorageSync('hema_cart_list').filter(v => v.choosed).length || 0
       })
     }
   },
@@ -68,6 +68,7 @@ Page({
   changeNumber(e) {
     const { index, value } = e.currentTarget.dataset
     const { cartList } = this.data
+    console.log(cartList)
     let valid = true
     cartList.some((v, i) => {
       if (i === index) {
@@ -98,7 +99,6 @@ Page({
     this.afterHandle()
   },
   changeAmount(e) {
-    console.log(e)
     let { value } = e.detail
     value = Math.floor(+value)
     value = value ? value : 1
@@ -117,11 +117,11 @@ Page({
   },
   afterHandle() {
     this.setData({
-      cartList
+      cartList: [...this.data.cartList]
     })
     this.computedAllPrice()
     this.computedAllAmount()
-    wx.setStorageSync('hema_cart_list', cartList)
+    wx.setStorageSync('hema_cart_list', this.data.cartList)
   },
   computedAllPrice() {
     let price = 0
@@ -183,6 +183,11 @@ Page({
     this.validChooseAll()
     wx.setStorageSync('hema_cart_list', cartList)
     this.handleTabCount()
+  },
+  toOrderPay() {
+    wx.navigateTo({
+      url: '/pages/order_auth/index'
+    })
   },
   /**
    * 生命周期函数--监听页面卸载

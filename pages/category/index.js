@@ -45,11 +45,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let len
+    if (wx.getStorageSync('hema_cart_list')) {
+      len = wx.getStorageSync('hema_cart_list').filter(v => v.choosed).length
+    } else {
+      len = 0
+    }
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
         selected: 1,
-        count: wx.getStorageSync('hema_cart_list').filter(v => v.choosed).length || 0
+        count: len
       })
     }
   },

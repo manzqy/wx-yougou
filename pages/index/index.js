@@ -11,13 +11,6 @@ Page({
     this.getSwiperData()
     this.getMenuData()
     this.getFloorData()
-    if (typeof this.getTabBar === 'function' &&
-      this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 0,
-        count: wx.getStorageSync('hema_cart_list').filter(v => v.choosed).length || 0
-      })
-    }
   },
   // 轮播图数据
   getSwiperData() {
@@ -73,7 +66,21 @@ Page({
     }
   },
   onReady: function() {},
-  onShow: function() {},
+  onShow: function() {
+    let len
+    if (wx.getStorageSync('hema_cart_list')) {
+      len = wx.getStorageSync('hema_cart_list').filter(v => v.choosed).length
+    } else {
+      len = 0
+    }
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0,
+        count: len
+      })
+    }
+  },
   onHide: function() {},
   onUnload: function() {},
   onPullDownRefresh: function() {},

@@ -54,13 +54,8 @@
   display: flex;
   align-items: center;
   height: 97rpx;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 96rpx;
   font-size: 28rpx;
   background: #fff;
-  z-index: 5;
   border-bottom: 1px solid #ccc;
 }
 .cart_accounts .choose_all {
@@ -178,11 +173,15 @@
 .line_padding {
   height: 60rpx;
 }
-.no_production {
-  padding: 150rpx 0;
-  text-align: center;
-  color: #ff2d4a;
+.list_num {
+  margin-right: 20rpx;
+  color: #0079d7;
+  font-size: 30rpx;
 }
-.no_production button {
-  margin: 50rpx;
+.order_pay {
+  padding: 50rpx 20rpx;
+  display: flex;
+}
+.order_pay button {
+  flex: 1;
 }

@@ -1,7 +1,7 @@
 Component({
   data: {
     selected: 0,
-    count: wx.getStorageSync('hema_cart_list').length || 0,
+    count: wx.getStorageSync('hema_cart_list') && wx.getStorageSync('hema_cart_list').filter(v => v.choosed).length || 0,
     color: '#7A7E83',
     selectedColor: '#3cc51f',
     list: [
@@ -31,14 +31,17 @@ Component({
       }
     ]
   },
-  attached() {},
+  lifetimes: {
+  },
+  attached() {
+  },
   methods: {
     switchTab(e) {
       const data = e.currentTarget.dataset
       const url = data.path
       wx.switchTab({ url })
       this.setData({
-        selected: data.index
+        // selected: data.index
       })
     }
   }

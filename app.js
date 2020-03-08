@@ -5,7 +5,7 @@ App({
   onLaunch: function(options){
     request.defaults.baseURL = 'https://api-hmugo-web.itheima.net/api/public/v1'
     request.onError(() => {
-      console.log('%c请求错误', 'color:green;font-size:25px;')
+      // console.log('%c请求错误', 'color:green;font-size:25px;')
     })
   },
   onShow: function(options){

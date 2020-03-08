@@ -1,3 +1,4 @@
+import request from '../../utils/request'
 // pages/auth/index.js
 Page({
 
@@ -14,7 +15,33 @@ Page({
   onLoad: function (options) {
 
   },
-
+  getInfo(e) {
+    console.log(e)
+    const {encryptedData, rawData, iv, signature} = e.detail
+    let data
+    wx.login({
+      success: (result)=>{
+        console.log(result)
+        data = {
+          encryptedData,
+          rawData,
+          iv,
+          signature,
+          code: result.code
+        }
+        request({
+          url: '/users/wxlogin',
+          method: 'post',
+          data
+        }).then(({data}) => {
+          console.log(data)
+          const {token} = data.message
+          wx.setStorageSync('hema_token', token)
+          wx.navigateBack()
+        })
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

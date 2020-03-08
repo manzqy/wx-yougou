@@ -1,1 +1,8 @@
 /* pages/auth/index.wxss */
+.auth {
+  display: flex;
+  padding: 300rpx 100rpx;
+}
+button {
+    flex: 1;
+}

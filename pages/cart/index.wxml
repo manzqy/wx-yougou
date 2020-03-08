@@ -1,74 +1,87 @@
-<view class="cart_header" wx:if="{{address.username}}">
-  <view class="cart_person">
-    <view class="person_item">
-      <text class="mr_20">收货人：</text>
-      <text>{{address.username}}</text>
+<view wx:if="{{cartList[0].id}}">
+  <view class="cart_header" wx:if="{{address.username}}">
+    <view class="cart_person">
+      <view class="person_item">
+        <text class="mr_20">收货人：</text>
+        <text>{{address.username}}</text>
+      </view>
+      <view class="person_item">
+        <text class="mr_20">{{address.tel}}</text>
+        <text class="row"></text>
+      </view>
     </view>
-    <view class="person_item">
-      <text class="mr_20">{{address.tel}}</text>
-      <text class="row"></text>
+    <view class="goods_address">
+      <text class="mr_20">收货地址</text>
+      <text>{{address.location}}</text>
     </view>
+    <view class="cart_address"></view>
   </view>
-  <view class="goods_address">
-    <text class="mr_20">收货地址</text>
-    <text>{{address.location}}</text>
+  <view class="rec_address" wx:if="{{!address.tel}}" bindtap="handleAddress">获取收货地址</view>
+  <view class="over_hidden">
+    <image class="hot_line" src="../../images/cart_border@2x.png" mode="aspectFill"></image>
   </view>
-  <view class="cart_address"></view>
-</view>
-<view class="rec_address" wx:if="{{!address.tel}}" bindtap="handleAddress">获取收货地址</view>
-<view class="over_hidden">
-  <image class="hot_line" src="../../images/cart_border@2x.png" mode="aspectFill"></image>
-</view>
-<view class="line"></view>
-<!-- 生活馆 -->
-<view class="life_house">
-  <i class="iconfont icon-dianpu"></i>
-  <text>优质生活馆</text>
-</view>
-<!-- 列表 -->
-<block wx:for="{{cartList}}" wx:key="index">
-  <view class="cart_list">
-    <view class="radio_btn">
-      <icon class="" type="success" size="22" color="{{item.choosed ? '#f00' : '#ccc'}}" bindtap="isChoosed" data-index="{{index}}"></icon>
-    </view>
-    <view class="small_logo">
-      <navigator url="/pages/goods_detail/index?goods_id={{item.id}}">
-        <image class="" src="{{item.small_logo}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-      </navigator>
-    </view>
-    <view class="list_content">
-      <view class="list_title">{{item.name}}</view>
-      <view class="list_price">
-        <view class="single_price">
-          <text>￥</text>
-          {{item.price}}.00
-        </view>
-        <view class="list_amount">
-          <view class="decrease" bindtap="changeNumber" data-value="{{-1}}" data-index="{{index}}">-</view>
-          <input class="" value="{{item.number}}" type="number" bindinput="" bindfocus="" bindblur="changeAmount" bindconfirm="" data-index="{{index}}"></input>
-          <view class="increase" bindtap="changeNumber" data-value="{{1}}" data-index="{{index}}">+</view>
+  <view class="line"></view>
+  <!-- 生活馆 -->
+  <view class="life_house">
+    <i class="iconfont icon-dianpu"></i>
+    <text>优质生活馆</text>
+  </view>
+  <!-- 列表 -->
+  <block wx:for="{{cartList}}" wx:key="index">
+    <view class="cart_list">
+      <view class="radio_btn">
+        <icon class="" type="success" size="22" color="{{item.choosed ? '#f00' : '#ccc'}}" bindtap="isChoosed" data-index="{{index}}"></icon>
+      </view>
+      <view class="small_logo">
+        <navigator url="/pages/goods_detail/index?goods_id={{item.id}}">
+          <image class="" src="{{item.small_logo}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+        </navigator>
+      </view>
+      <view class="list_content">
+        <view class="list_title">{{item.name}}</view>
+        <view class="list_price">
+          <view class="single_price">
+            <text>￥</text>
+            {{item.price}}.00
+          </view>
+          <view class="list_amount">
+            <view class="decrease" bindtap="changeNumber" data-value="{{-1}}" data-index="{{index}}">
+              -
+            </view>
+            <input class="" value="{{item.number}}" type="number" bindinput="" bindfocus="" bindblur="changeAmount" bindconfirm="" data-index="{{index}}"></input>
+            <view class="increase" bindtap="changeNumber" data-value="{{1}}" data-index="{{index}}">
+              +
+            </view>
+          </view>
         </view>
       </view>
     </view>
-  </view>
-</block>
-<!-- 无更多内容了 -->
-<bottomLine icon="iconfont icon-xiaolian"></bottomLine>
-<view class="line_padding"></view>
-<!-- 结算栏 -->
-<view class="cart_accounts">
-  <view class="radio_btn" bindtap="isChoosedAll">
-    <icon class="" type="success" size="22" color="{{chooseAll ? '#f00' : '#ccc'}}"></icon>
-  </view>
-  <view class="choose_all">全选</view>
-  <view class="all_price">
-    <view class="price_total">
-      合计：
-      <text class="mini_red">￥</text>
-      <text class="large_red">{{allPrice}}</text>
-      <text class="mini_red">.00</text>
+  </block>
+  <!-- 无更多内容了 -->
+  <!-- <bottomLine icon="iconfont icon-xiaolian"></bottomLine> -->
+  <view class="line_padding"></view>
+  <!-- 结算栏 -->
+  <view class="cart_accounts">
+    <view class="radio_btn" bindtap="isChoosedAll">
+      <icon class="" type="success" size="22" color="{{chooseAll ? '#f00' : '#ccc'}}"></icon>
     </view>
-    <view class="price_post">包含运费</view>
+    <view class="choose_all">全选</view>
+    <view class="all_price">
+      <view class="price_total">
+        合计：
+        <text class="mini_red">￥</text>
+        <text class="large_red">{{allPrice}}</text>
+        <text class="mini_red">.00</text>
+      </view>
+      <view class="price_post">包含运费</view>
+    </view>
+    <view class="cart_amount" bindtap="toOrderPay">结算({{allAmount}})</view>
   </view>
-  <view class="cart_amount">结算({{allAmount}})</view>
+</view>
+<!-- 无商品跳转 -->
+<view class="no_production" wx:if="{{!cartList[0].id}}">
+  暂无添加商品
+  <navigator url="/pages/category/index" open-type="switchTab">
+    <button type="primary">添加商品</button>
+  </navigator>
 </view>

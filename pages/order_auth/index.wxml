@@ -1,0 +1,62 @@
+<view class="cart_header" wx:if="{{address.username}}">
+  <view class="cart_person">
+    <view class="person_item">
+      <text class="mr_20">收货人：</text>
+      <text>{{address.username}}</text>
+    </view>
+    <view class="person_item">
+      <text class="mr_20">{{address.tel}}</text>
+      <text class="row"></text>
+    </view>
+  </view>
+  <view class="goods_address">
+    <text class="mr_20">收货地址</text>
+    <text>{{address.location}}</text>
+  </view>
+  <view class="cart_address"></view>
+</view>
+<view class="rec_address" wx:if="{{!address.tel}}" bindtap="handleAddress">获取收货地址</view>
+<view class="over_hidden">
+  <image class="hot_line" src="../../images/cart_border@2x.png" mode="aspectFill"></image>
+</view>
+<view class="line"></view>
+<!-- 生活馆 -->
+<view class="life_house">
+  <i class="iconfont icon-dianpu"></i>
+  <text>优质生活馆</text>
+</view>
+<!-- 列表 -->
+<block wx:for="{{cartList}}" wx:key="index">
+  <view class="cart_list" wx:if="{{item.choosed}}">
+    <view class="small_logo">
+      <navigator url="/pages/goods_detail/index?goods_id={{item.id}}">
+        <image class="" src="{{item.small_logo}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+      </navigator>
+    </view>
+    <view class="list_content">
+      <view class="list_title">{{item.name}}</view>
+      <view class="list_price">
+        <view class="single_price">
+          <text>￥</text>
+          {{item.price}}.00
+        </view>
+        <view class="list_num">数量 * {{item.number}}</view>
+      </view>
+    </view>
+  </view>
+</block>
+<!-- 结算栏 -->
+<view class="cart_accounts">
+  <view class="all_price">
+    <view class="price_total">
+      合计：
+      <text class="mini_red">￥</text>
+      <text class="large_red">{{allPrice}}</text>
+      <text class="mini_red">.00</text>
+    </view>
+  </view>
+</view>
+<view class="line"></view>
+<view class="order_pay">
+  <button type="primary" bindtap="handlePay">支付</button>
+</view>
