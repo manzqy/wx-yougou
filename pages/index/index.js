@@ -4,7 +4,8 @@ Page({
     swiperData: [],
     menusData: [],
     floorData: [],
-    isShow: false
+    isShow: false,
+    isloading: true
   },
   //options(Object)
   onLoad: function(options) {
@@ -14,6 +15,9 @@ Page({
   },
   // 轮播图数据
   getSwiperData() {
+    wx.showLoading({
+      title: '加载中',
+    })
     request({
       url: '/home/swiperdata'
     }).then(({ data }) => {
@@ -43,6 +47,12 @@ Page({
       this.setData({
         floorData: message
       })
+      setTimeout(() => {
+        this.setData({
+          isloading: false
+        })
+        wx.hideLoading()
+      }, 2000)
     })
   },
   toScrollTop() {

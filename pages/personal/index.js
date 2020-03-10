@@ -5,14 +5,55 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    tab: [
+      {
+        amount: 0,
+        title: '收藏的店铺'
+      },
+      {
+        amount: 0,
+        title: '收藏的商品'
+      },
+      {
+        amount: 0,
+        title: '关注的商品'
+      },
+      {
+        amount: 0,
+        title: '我的足迹'
+      }
+    ],
+    menu: [
+      {
+        icon: 'icon-fukuan',
+        content: '代付款'
+      },
+      {
+        icon: 'icon-daishouhuo',
+        content: '待收货'
+      },
+      {
+        icon: 'icon-tuikuan',
+        content: '退款/退货'
+      },
+      {
+        icon: 'icon-icon--copy',
+        content: '全部订单'
+      },
+    ],
+    avatarUrl: '',
+    nickName: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const {avatarUrl, nickName} = wx.getStorageSync('hema_nick')
+    this.setData({
+      avatarUrl,
+      nickName
+    })
   },
 
   /**
@@ -21,7 +62,47 @@ Page({
   onReady: function () {
 
   },
-
+  getUser() {
+    wx.getUserInfo({
+      success: (res) => {
+        // var userInfo = res.userInfo
+        // var nickName = userInfo.nickName
+        // var avatarUrl = userInfo.avatarUrl
+        // var gender = userInfo.gender //性别 0：未知、1：男、2：女
+        // var province = userInfo.province
+        // var city = userInfo.city
+        // var country = userInfo.country
+        this.setData({
+          avatarUrl: res.userInfo.avatarUrl,
+          nickName: res.userInfo.nickName
+        })
+        wx.setStorageSync('hema_nick', {
+          avatarUrl: res.userInfo.avatarUrl,
+          nickName: res.userInfo.nickName
+        })
+      }
+    })
+  },
+  getAddress() {
+    wx.chooseAddress({
+      success: (result)=>{
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    })
+  },
+  callPhone() {
+    wx.makePhoneCall({
+      phoneNumber: '1340000'
+    })
+  },
+  quitLogin() {
+    this.setData({
+      avatarUrl: '',
+      nickName: ''
+    })
+    wx.setStorageSync('hema_nick', {})
+  },
   /**
    * 生命周期函数--监听页面显示
    */

@@ -7,24 +7,24 @@ page {
   height: 538rpx;
   width: 100%;
   background-size: cover !important;
-}
-.person_bg .person_pic {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 35rpx;
-}
-.person_bg .person_pic .iconfont {
-  color: #fff;
-  cursor: pointer;
-}
-.person_bg .person_pic image {
-  width: 140rpx;
-  height: 140rpx;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  margin: 0 68rpx;
+  .person_pic {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 35rpx;
+    .iconfont {
+      color: #fff;
+      cursor: pointer;
+    }
+    image {
+      width: 140rpx;
+      height: 140rpx;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      margin: 0 68rpx;
+    }
+  }
 }
 .bg_glass {
   position: absolute;
@@ -54,13 +54,13 @@ page {
   font-size: 24rpx;
   border-radius: 5px 5px 0 0;
   color: #666;
-}
-.person_tab .tab_item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  cursor: pointer;
+  .tab_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+  }
 }
 .mx_20 {
   padding: 0 20rpx;
@@ -82,17 +82,17 @@ page {
   height: 166rpx;
   background-color: #fff;
   border-radius: 0 0 5px 5px;
-}
-.menu .menu_item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 29rpx;
-}
-.menu .menu_item .iconfont {
-  color: #eb4450;
-  font-size: 60rpx;
+  .menu_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 29rpx;
+    .iconfont {
+      color: #eb4450;
+      font-size: 60rpx;
+    }
+  }
 }
 .person_address {
   height: 87rpx;
@@ -103,18 +103,18 @@ page {
   background-color: #fff;
   position: relative;
   cursor: pointer;
-}
-.person_address::after {
-  content: '';
-  width: 16rpx;
-  height: 16rpx;
-  position: absolute;
-  right: 30rpx;
-  top: 50%;
-  margin-top: -8rpx;
-  border-top: 1px solid #000;
-  border-right: 1px solid #000;
-  transform: rotate(45deg);
+  &::after {
+    content: '';
+    width: 16rpx;
+    height: 16rpx;
+    position: absolute;
+    right: 30rpx;
+    top: 50%;
+    margin-top: -8rpx;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    transform: rotate(45deg);
+  }
 }
 .person_line {
   height: 20rpx;
@@ -138,10 +138,10 @@ page {
 .quit {
   display: flex;
   padding: 50rpx;
-}
-.quit button {
-  flex: 1;
-  background: #eb4450;
-  color: #fff;
-  font-size: 32rpx;
+  button {
+    flex: 1;
+    background: #eb4450;
+    color: #fff;
+    font-size: 32rpx;
+  }
 }

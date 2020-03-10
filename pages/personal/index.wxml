@@ -1,2 +1,48 @@
-<!--pages/personal/index.wxml-->
-<text>pages/personal/index.wxml</text>
+<view class="person_bg" style="background:url({{avatarUrl}}) no-repeat center" wx:if="{{nickName}}">
+  <view class="bg_glass">
+    <view class="person_pic">
+      <text class="iconfont icon-shezhi"></text>
+      <image class="" src="{{avatarUrl}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+      <text class="iconfont icon-huihua"></text>
+    </view>
+    <view class="bg_content" bindtap="getUser" wx:if="{{nickName}}">{{nickName}}</view>
+  </view>
+</view>
+<view class="bg_content" bindtap="getUser" wx:if="{{!nickName}}" style="color: red;text-align:center;padding:100rpx 30rpx;font-size:36rpx;background:rgba(0,0,0,0.1);">登录 / 注册</view>
+<view class="mx_20">
+  <view class="person_tab">
+    <block wx:for="{{tab}}" wx:key="index">
+      <view class="tab_item">
+        <text class="tab_amount">{{item.amount}}</text>
+        <text>{{item.title}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="main_title">
+    我的订单
+  </view>
+  <view class="menu">
+    <block wx:for="{{menu}}">
+      <view class="menu_item">
+        <text class="iconfont {{item.icon}}"></text>
+        <text >{{item.content}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="person_line"></view>
+  <view class="person_address" bindtap="getAddress">
+    收货地址的管理
+  </view>
+  <view class="person_line"></view>
+  <view class="person_contant">
+    <text >联系客服</text>
+    <text >400-618-4000</text>
+  </view>
+  <view class="person_address" bindtap="callPhone">
+    意见反馈
+  </view>
+  <view class="quit">
+    <button bindtap="quitLogin">退出</button>
+  </view>
+  <view class="bottom"></view>
+</view>

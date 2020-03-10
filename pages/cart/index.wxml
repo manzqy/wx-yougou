@@ -1,4 +1,4 @@
-<view wx:if="{{cartList[0].id}}">
+<view wx:if="{{cartList.length}}">
   <view class="cart_header" wx:if="{{address.username}}">
     <view class="cart_person">
       <view class="person_item">
@@ -79,7 +79,7 @@
   </view>
 </view>
 <!-- 无商品跳转 -->
-<view class="no_production" wx:if="{{!cartList[0].id}}">
+<view class="no_production" wx:if="{{!cartList.length}}">
   暂无添加商品
   <navigator url="/pages/category/index" open-type="switchTab">
     <button type="primary">添加商品</button>
